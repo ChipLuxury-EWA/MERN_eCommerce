@@ -15,12 +15,13 @@ const ProductScreen = () => {
         getProduct();
     }, [params.id]);
 
+
     return (
         <>
-            <Link to="/" className="btn btn-light my-3">
+            <Link to="/" className="btn btn-primary btn-lg my-3">
                 תפריט ראשי
             </Link>
-            
+
             <Row>
                 <Col md={6}>
                     <Image src={product.image} alt={product.name} fluid />
