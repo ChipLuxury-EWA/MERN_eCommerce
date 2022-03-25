@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
-// import products from "../../menu";
 import Product from "../Product";
-// import axios from "axios";
-
-import productsApi from "../../api/products.api.js";
+import { fetchProducts } from "../../services/products.service.js";
 
 const HomeScreen = () => {
     const [products, setProducts] = useState([]);
@@ -14,7 +11,7 @@ const HomeScreen = () => {
     }, []);
 
     const initializeProducts = async () => {
-        setProducts(await productsApi.fetchProducts());
+        setProducts(await fetchProducts());
     };
 
     return (

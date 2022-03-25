@@ -12,6 +12,7 @@ async function getProductByID(id) {
         return await Product.findById(id);
     } catch (error) {
         console.log(`Error fetching product ${id}`.red.inverse);
+        // throw new Error(`Product ${id} not found `)
         return `Error fetching product ${id}`;
     }
 }

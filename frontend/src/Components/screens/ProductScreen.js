@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card, Col, Image, ListGroup, Row } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
-import productsApi from "../../api/products.api.js";
+import { fetchProductById } from "../../services/products.service.js";
 import Rating from "../Rating";
 
 const ProductScreen = () => {
@@ -10,11 +10,10 @@ const ProductScreen = () => {
 
     useEffect(() => {
         async function getProduct() {
-            setProduct(await productsApi.fetchProductById(params.id));
+            setProduct(await fetchProductById(params.id));
         }
         getProduct();
     }, [params.id]);
-
 
     return (
         <>

@@ -4,6 +4,7 @@ import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import HomeScreen from "./Components/screens/HomeScreen";
 import ProductScreen from "./Components/screens/ProductScreen";
+import NotFound from "./Components/screens/NotFound";
 
 const App = () => {
     return (
@@ -15,6 +16,7 @@ const App = () => {
                         <Routes>
                             <Route exact path="/" element={<HomeScreen />} />
                             <Route path="/product/:id" element={<ProductScreen />} />
+                            <Route path="/*" element={<NotFound />}/>
                         </Routes>
                     </Container>
                 </main>
