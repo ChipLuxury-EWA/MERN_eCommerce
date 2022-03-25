@@ -2,7 +2,7 @@ import {
     PRODUCT_LIST_REQUEST,
     PRODUCT_LIST_SUCCESS,
     PRODUCT_LIST_FAILED,
-} from "../../src/constants/product.constants.js";
+} from "../constants/product.constants.js";
 
 import { fetchProducts } from "../../services/products.service.js";
 
