@@ -7,10 +7,10 @@ const fetchProducts = async () => {
 
 const fetchProductById = async (id) => {
     const { data } = await axios.get(`/products/${id}`);
-    if (typeof data === "string" && data.split(" ")[0] === "Error") {
-        console.log(data);
-        return {name: "Item not found"}
-    }
+    // if (typeof data === "string" && data.split(" ")[0] === "Error") {
+    //     console.log(data);
+    //     return {name: "Item not found"}
+    // }
     return data;
 };
 
