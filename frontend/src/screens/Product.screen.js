@@ -10,26 +10,27 @@ import {
     Row,
 } from "react-bootstrap";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import Rating from "../Rating";
-import { listProductDetails } from "../../redux/actions/product.actions.js";
-import Loader from "../Loader.js";
-import Message from "../Message.js";
+import Rating from "../Components/Rating";
+import { listProductDetails } from "../redux/actions/product.actions.js";
+import Loader from "../Components/Loader.js";
+import Message from "../Components/Message.js";
 
 const ProductScreen = () => {
     const params = useParams();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
     const productDetails = useSelector((state) => state.productDetails);
     const { loading, error, product } = productDetails;
-    const [quantity, setQuantity] = useState(0);
+    const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
         dispatch(listProductDetails(params.id));
     }, [dispatch, params.id]);
 
     const addToCart = () => {
-        navigate(`/cart/${params.id}?quantity=${quantity}`)
-    }
+        navigate(`/cart/${params.id}?quantity=${quantity}`);
+    };
 
     return (
         <>
@@ -92,7 +93,7 @@ const ProductScreen = () => {
                                 {product.countInStock > 0 && (
                                     <ListGroup>
                                         <Row>
-                                        {/* TODO: fix the bootswatch dropdown arrow */}
+                                            {/* TODO: fix the bootswatch dropdown arrow */}
                                             <Col>כמות</Col>
                                             <Col>
                                                 <Form.Control

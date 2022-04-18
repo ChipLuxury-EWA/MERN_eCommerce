@@ -1,9 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 
-main {
-    min-height: 80vh;
-}
-
 body, html {
     font-family: 'M PLUS Rounded 1c', sans-serif;
 }

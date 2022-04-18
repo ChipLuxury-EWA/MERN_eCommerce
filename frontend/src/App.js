@@ -2,10 +2,10 @@ import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
-import HomeScreen from "./Components/screens/Home.screen";
-import ProductScreen from "./Components/screens/Product.screen";
-import NotFound from "./Components/screens/NotFound.screen";
-import Cart from "./Components/screens/Cart.screen";
+import HomeScreen from "./screens/Home.screen";
+import ProductScreen from "./screens/Product.screen";
+import NotFound from "./screens/NotFound.screen";
+import Cart from "./screens/Cart.screen";
 
 const App = () => {
     return (
