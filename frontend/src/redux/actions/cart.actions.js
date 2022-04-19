@@ -1,4 +1,4 @@
-import { CART_ADD_ITEM } from "../constants/cart.constants";
+import { CART_ADD_ITEM, CART_REMOVE_ITEM } from "../constants/cart.constants";
 import { fetchProductById } from "../../services/products.service.js";
 
 export const addToCart = (id, quantity) => async (dispatch, getState) => {
@@ -14,5 +14,19 @@ export const addToCart = (id, quantity) => async (dispatch, getState) => {
             quantity: quantity,
         },
     });
-    localStorage.setItem('cartItems', JSON.stringify(getState().cart.cartItems))
+    localStorage.setItem(
+        "cartItems",
+        JSON.stringify(getState().cart.cartItems)
+    );
+};
+
+export const removeFromCart = (id) => async (dispatch, getState) => {
+    dispatch({
+        type: CART_REMOVE_ITEM,
+        payload: id,
+    });
+    localStorage.setItem(
+        "cartItems",
+        JSON.stringify(getState().cart.cartItems)
+    );
 };

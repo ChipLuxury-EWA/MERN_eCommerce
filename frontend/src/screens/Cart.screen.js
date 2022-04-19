@@ -13,7 +13,7 @@ import {
     Container,
 } from "react-bootstrap";
 import Message from "../Components/Message";
-import { addToCart } from "../redux/actions/cart.actions";
+import { addToCart, removeFromCart } from "../redux/actions/cart.actions";
 
 const Cart = () => {
     const params = useParams();
@@ -38,7 +38,7 @@ const Cart = () => {
     };
 
     const removeFromCartHandler = (id) => {
-        console.log("remove");
+        dispatch(removeFromCart(id));
     };
 
     const checkoutHandler = () => {
@@ -117,7 +117,7 @@ const Cart = () => {
                                         </Col>
                                         <Col md={1}>
                                             <Button
-                                                variant="btn btn-warning"
+                                                className="btn btn-warning"
                                                 onClick={() =>
                                                     removeFromCartHandler(
                                                         item.product
