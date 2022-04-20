@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URI).then(() => {
     console.log("Connected to MongoDB (Atlas)".bgBlue);
     server = app.listen(PORT, () => {
         console.log(
-            `Server is up and runing in ${process.env.NODE_ENV} mode on port: ${PORT}!`
+            `Server is up and running in ${process.env.NODE_ENV} mode on port: ${PORT}!`
                 .bgBlue,
             `\n`,
             "\xA9 Tom Portugez \xA9".trap.underline

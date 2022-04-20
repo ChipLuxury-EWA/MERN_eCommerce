@@ -1,4 +1,5 @@
 import Product from "../models/product.model.js";
+
 async function getAllProducts() {
     try {
         return await Product.find({});
