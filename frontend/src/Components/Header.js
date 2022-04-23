@@ -1,11 +1,21 @@
-import React from "react";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { logout } from "../redux/actions/user.actions";
 
 const Header = () => {
+    const dispatch = useDispatch();
+    const { loading, error, loggedUserData } = useSelector(
+        (state) => state.loggedUser
+    );
+
+    const logoutHandler = () => {
+        dispatch(logout())
+    }
+
     return (
         <header>
-            <Navbar bg="primary" expand="sm" >
+            <Navbar bg="primary" expand="sm">
                 <Container>
                     <LinkContainer to="/">
                         <Navbar.Brand>
@@ -28,11 +38,20 @@ const Header = () => {
                                     עגלת קניות
                                 </Nav.Link>
                             </LinkContainer>
-                            <LinkContainer to="/login">
-                                <Nav.Link>
-                                    <i className="fas fa-user"></i> כניסה
-                                </Nav.Link>
-                            </LinkContainer>
+                            {loggedUserData ? (
+                                <NavDropdown title={loggedUserData.name} id='username' >
+                                    <LinkContainer to='/profile'>
+                                        <NavDropdown.Item>פּרוֹפִיל</NavDropdown.Item>
+                                    </LinkContainer>
+                                        <NavDropdown.Item onClick={logoutHandler}>יציאה</NavDropdown.Item>
+                                </NavDropdown>
+                            ) : (
+                                <LinkContainer to="/login">
+                                    <Nav.Link>
+                                        <i className="fas fa-user"></i> כניסה
+                                    </Nav.Link>
+                                </LinkContainer>
+                            )}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

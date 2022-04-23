@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -16,23 +15,21 @@ const LoginScreen = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { loading, error, loggedUserData } = useSelector(
-        (state) => state.loggedUser
-    );
+    const userLogin = useSelector((state) => state.loggedUser);
+    const { loading, error, loggedUserData } = userLogin;
     const redirect = location.search ? location.search.split("=")[1] : "/";
 
     useEffect(() => {
         if (loggedUserData) {
             navigate(redirect);
         }
-    }, [navigate, redirect, loggedUserData]);
+    }, [navigate, loggedUserData, redirect]);
 
     const submitHandler = (e) => {
         e.preventDefault();
         dispatch(login(email, password));
     };
 
-    
     return (
         <FormContainer>
             <h1>כניסה</h1>
