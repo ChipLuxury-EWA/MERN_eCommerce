@@ -6,6 +6,7 @@ import HomeScreen from "./screens/Home.screen";
 import ProductScreen from "./screens/Product.screen";
 import NotFound from "./screens/NotFound.screen";
 import Cart from "./screens/Cart.screen";
+import LoginScreen from "./screens/Login.screen";
 
 const App = () => {
     return (
@@ -20,6 +21,7 @@ const App = () => {
                             <Route path="cart" element={<Cart />}>
                                 <Route path=":id" element={<Cart />} />
                             </Route>
+                            <Route path="login" element={<LoginScreen />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </Container>

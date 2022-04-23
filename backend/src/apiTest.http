@@ -1,7 +1,27 @@
+###
+# @name postRegister
 POST http://localhost:5000/user HTTP/1.1
 content-type: application/json
 
 {
+    "name": "avi",
     "email": "avi@gmail.com",
     "password": "123456"
 }
+
+### send user email and password and get token
+# @name postLogin
+POST http://localhost:5000/user/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "avi@gmail.com",
+    "password": "1234567"
+}
+
+###
+GET http://localhost:5000/user/profile HTTP/1.1
+Authorization: Bearer {{postLogin.response.body.token}}
+
+###
+GET http://localhost:5000/foo HTTP/1.1

@@ -1,18 +1,28 @@
 import express from "express";
 
-import { authenticateUser } from "../../controllers/user.controller.js";
+import {
+    authenticateUser,
+    getUserProfile,
+    registerUser,
+} from "../../controllers/user.controller.js";
+import { authenticateToken } from "../../middlewares/authentication.middleware.js";
+
 const router = express.Router();
 
-router
-    .route("/")
+router.route("/")
+    .get()
+    .post(registerUser)
+    .put()
+    .delete();
+
+router.route("/login")
     .get()
     .post(authenticateUser)
     .put()
     .delete();
 
-router
-    .route("/:id")
-    .get()
+router.route("/profile")
+    .get(authenticateToken, getUserProfile)
     .post()
     .put()
     .delete();
