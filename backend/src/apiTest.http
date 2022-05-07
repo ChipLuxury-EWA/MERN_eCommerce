@@ -16,7 +16,7 @@ content-type: application/json
 
 {
     "email": "avi@gmail.com",
-    "password": "1234567"
+    "password": "123456"
 }
 
 ###
@@ -25,3 +25,13 @@ Authorization: Bearer {{postLogin.response.body.token}}
 
 ###
 GET http://localhost:5000/foo HTTP/1.1
+
+###
+# @name updateUserProfile
+PUT http://localhost:5000/user/profile HTTP/1.1
+Authorization: Bearer {{postLogin.response.body.token}}
+content-type: application/json
+
+{
+    "password" : "123456"
+}

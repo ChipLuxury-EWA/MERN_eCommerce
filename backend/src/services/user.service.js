@@ -20,14 +20,49 @@ export const authenticateUserService = async (details) => {
 };
 
 export const getUserProfileService = async (id) => {
-        const user = await User.findById(id).select(
-            "-password -createdAt -updatedAt"
-        );
-        if (user) {
-            return user;
-        } else {
-            throw new Error("User not found")
+    const user = await User.findById(id).select(
+        "-password -createdAt -updatedAt"
+    );
+    if (user) {
+        return user;
+    } else {
+        throw new Error("User not found");
+    }
+};
+
+export const updateUserProfileService = async (id, newDetails) => {
+    console.log("user service")
+    console.log("new details:", newDetails)
+    const user = await User.findById(id).select(
+        "-password -createdAt -updatedAt"
+    );
+    if (user) {
+        user.name = newDetails.name || user.name;
+
+        if (newDetails.email) {
+            const existEmail = await User.findOne({ email: newDetails.email });
+            if (existEmail) {
+                throw new Error("Email already exists");
+            } else {
+                user.email = newDetails.email || user.email;
+            }
         }
+
+        if (newDetails.password) {
+            user.password = newDetails.password;
+        }
+        const updatedUser = await user.save();
+
+        return {
+            _id: updatedUser._id,
+            name: updatedUser.name,
+            email: updatedUser.email,
+            isAdmin: updatedUser.isAdmin,
+            token: generateToken(updatedUser._id),
+        };
+    } else {
+        throw new Error("User not found");
+    }
 };
 
 export const registerUserService = async (details) => {
@@ -37,7 +72,7 @@ export const registerUserService = async (details) => {
     if (userExists) {
         throw new Error("user already exists, can't register");
     }
-    
+
     const user = await User.create({
         name,
         email,

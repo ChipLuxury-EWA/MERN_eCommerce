@@ -4,6 +4,7 @@ import {
     authenticateUser,
     getUserProfile,
     registerUser,
+    updateUserProfile,
 } from "../../controllers/user.controller.js";
 import { authenticateToken } from "../../middlewares/authentication.middleware.js";
 
@@ -24,7 +25,7 @@ router.route("/login")
 router.route("/profile")
     .get(authenticateToken, getUserProfile)
     .post()
-    .put()
+    .put(authenticateToken, updateUserProfile)
     .delete();
 
 export default router;
