@@ -50,7 +50,7 @@ export const registerUserService = async (details) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
-            // token: null//generateToken(user._id),
+            token: generateToken(user._id),
         };
     }
 };

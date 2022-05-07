@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button, Row, Col, Badge } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 
 import Message from "../Components/Message.js";
 import Loader from "../Components/Loader.js";
@@ -64,21 +64,19 @@ const LoginScreen = () => {
                             היכנס
                         </Button>
                     </Col>
-                    <Col xs={6}>
-                        <Button
-                            onClick={() =>
-                                navigate(
-                                    redirect
-                                        ? `/register?redirect=${redirect}`
-                                        : "/register"
-                                )
-                            }
-                        >
-                            הרשמה
-                        </Button>
-                    </Col>
                 </Row>
             </Form>
+
+            <Row>
+                <Col>
+                    <Badge
+                        className="btn btn-sm bg-info"
+                        onClick={() => navigate("/register")}
+                    >
+                        משתמש חדש? הירשם
+                    </Badge>
+                </Col>
+            </Row>
         </FormContainer>
     );
 };

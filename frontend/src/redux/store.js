@@ -9,13 +9,17 @@ import {
 
 import { cartReducer } from "./reducers/cart.reducers.js";
 
-import { userLoginReducer } from "./reducers/user.reducers.js";
+import {
+    userLoginReducer,
+    userRegisterReducer,
+} from "./reducers/user.reducers.js";
 
 const reducer = combineReducers({
     productList: productListReducer,
     productDetails: productDetailsReducer,
     cart: cartReducer,
     loggedUser: userLoginReducer,
+    registeredUser: userRegisterReducer,
 });
 
 // TODO: create a function instead of this double codes:

@@ -7,6 +7,7 @@ import ProductScreen from "./screens/Product.screen";
 import NotFound from "./screens/NotFound.screen";
 import Cart from "./screens/Cart.screen";
 import LoginScreen from "./screens/Login.screen";
+import RegisterScreen from "./screens/Register.screen";
 
 const App = () => {
     return (
@@ -22,6 +23,7 @@ const App = () => {
                                 <Route path=":id" element={<Cart />} />
                             </Route>
                             <Route path="login" element={<LoginScreen />} />
+                            <Route path="register" element={<RegisterScreen />} />
                             <Route path="*" element={<NotFound />} />
                         </Routes>
                     </Container>
