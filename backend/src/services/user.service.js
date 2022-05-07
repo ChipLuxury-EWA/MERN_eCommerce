@@ -1,4 +1,3 @@
-import ApiError from "../middlewares/apiError.class.js";
 import User from "../models/user.model.js";
 import generateToken from "./jwt.service.js";
 
